@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: blueviolet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: arial;
+        }
+
+        .btn {
+            width: 200px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: cornsilk;
+            background-color: deepskyblue;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
+        .overplay {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            z-index: 1;
+            background-color: rgba(0,0,0,.75);
+            animation: anim  .25s ease-in-out;
+        }
+
+        .window {
+            width: 500px;
+            height: 500px;
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        @keyframes anim {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="btn">
+        Click
+    </div>
+
+    <div class="overplay">
+        <div class="window">
+            <div class="close">
+                X
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        let more = document.querySelector('.btn'),
+            overplay = document.querySelector('.overplay'),
+            close = document.querySelector('.close');
+
+        more.addEventListener('click', function() {
+            overplay.style.display = 'block';
+            this.classList.add('btn-animation');
+            document.body.style.overflow = 'hidden';
+        });
+
+        close.addEventListener('click', function() {
+            overplay.style.display = 'none';
+            more.classList.add('btn-animation');
+            document.body.style.overflow = '';
+        });
+
+    </script>
+</body>
+</html>
